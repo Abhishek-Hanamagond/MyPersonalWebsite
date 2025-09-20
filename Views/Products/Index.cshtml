@@ -4,32 +4,36 @@
     ViewData["Title"] = "Products";
 }
 
-<h1>Products</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
     <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 
-<!-- Add the search form here -->
-<form asp-controller="Products" asp-action="Index" method="get">
-    <p>
-        Title: <input type="text" name="SearchString">
-        <input type="submit" value="Filter" />
-    </p>
+<form asp-controller="Products" asp-action="Index" method="get" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="SearchString" class="form-control" placeholder="Filter by title..." value="@ViewData["CurrentFilter"]">
+        <div class="input-group-append">
+            <input type="submit" value="Filter" class="btn btn-outline-secondary" />
+        </div>
+    </div>
 </form>
 
 <div class="row">
     @foreach (var item in Model) {
-        <div class="col-md-4 fade-in">
+        <div class="col-md-4">
             <div class="product-card">
-                <div class="card-body">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h5>
-                    <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
-                    <p class="card-text"><strong>Price:</strong> @Html.DisplayFor(modelItem => item.Price)</p>
-                    <p class="card-text"><strong>Seller:</strong> @Html.DisplayFor(modelItem => item.Seller.Name)</p>
-                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-primary">Edit</a>
-                    <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-info">Details</a>
-                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger">Delete</a>
+                <h5 class="product-title">@Html.DisplayFor(modelItem => item.Name)</h5>
+                <p class="product-description">@Html.DisplayFor(modelItem => item.Description)</p>
+                <p class="product-price">@item.Price.ToString("N2")</p>
+                @if (item.Seller != null)
+                {
+                    <p class="product-seller">Sold by: @Html.DisplayFor(modelItem => item.Seller.Name)</p>
+                }
+                <div class="mt-auto">
+                    <a asp-action="Edit" asp-route-id="@item.ProductId" class="btn btn-primary btn-sm">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.ProductId" class="btn btn-secondary btn-sm">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.ProductId" class="btn btn-danger btn-sm">Delete</a>
                 </div>
             </div>
         </div>
