@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MyPersonalWebsite.Models
@@ -18,8 +18,8 @@ namespace MyPersonalWebsite.Models
         [Column(TypeName = "decimal(10,2)")]
         public decimal Price { get; set; }
 
-        // Foreign key to Seller
-        public int SellerId { get; set; }
+        // Foreign key to Seller (optional)
+        public int? SellerId { get; set; }
         public Seller Seller { get; set; }
     }
 }
