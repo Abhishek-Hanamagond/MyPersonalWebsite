@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using LocalMarket.Models;
+using MyPersonalWebsite.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace LocalMarket.Controllers
