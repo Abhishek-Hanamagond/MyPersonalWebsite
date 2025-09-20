@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MyPersonalWebsite.Models.Product>
+@{
+    ViewData["Title"] = "Search Products";
+    var query = ViewContext.HttpContext.Request.Query["query"].ToString();
+}
+
+<div class="container mt-4">
+    <h2>@ViewData["Title"]</h2>
+
+    <!-- Search Form -->
+    <form method="get" asp-action="Search" class="mb-4">
+        <div class="input-group">
+            <input type="text" name="query" class="form-control" placeholder="Search products..." value="@query" />
+            <button class="btn btn-primary" type="submit">Search</button>
+        </div>
+    </form>
+
+    <!-- Search Results -->
+    <div class="row">
+        @if (!Model.Any())
+        {
+            <div class="col-12">
+                <p>No products found.</p>
+            </div>
+        }
+        else
+        {
+            @foreach (var product in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">@product.Name</h5>
+                            <p class="card-text">@product.Description</p>
+                            <p class="card-text"><strong>Price:</strong> ₹@product.Price</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
