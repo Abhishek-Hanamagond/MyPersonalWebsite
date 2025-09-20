@@ -1,0 +1,26 @@
+
+/* Add a subtle shadow to the navigation bar */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+/* Add a box shadow to product cards */
+.product-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the footer */
+.footer {
+    padding: 20px 0;
+    background-color: #f8f9fa;
+}
