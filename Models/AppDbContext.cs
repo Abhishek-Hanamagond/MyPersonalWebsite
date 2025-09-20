@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-
+using MyPersonalWebsite.Models;
 namespace MyPersonalWebsite.Models    
 {
     public class AppDbContext : DbContext
