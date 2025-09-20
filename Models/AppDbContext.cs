@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.Reflection.Metadata;
+using Microsoft.EntityFrameworkCore;
 
 namespace MyPersonalWebsite.Models
 {
@@ -9,6 +8,6 @@ namespace MyPersonalWebsite.Models
 
         public DbSet<Seller> Sellers { get; set; }
         public DbSet<Product> Products { get; set; }
-        public DbSet<Blogs> Blogs { get; set; }
+        public DbSet<Blog> Blogs { get; set; }
     }
 }

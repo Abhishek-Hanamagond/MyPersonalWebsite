@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -47,7 +47,7 @@ namespace MyPersonalWebsite.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
-            ViewData["SellerId"] = new SelectList(_context.Sellers, "SellerId", "SellerId");
+            ViewData["SellerId"] = new SelectList(_context.Sellers, "SellerId", "Name");
             return View();
         }
 
@@ -64,7 +64,7 @@ namespace MyPersonalWebsite.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SellerId"] = new SelectList(_context.Sellers, "SellerId", "SellerId", product.SellerId);
+            ViewData["SellerId"] = new SelectList(_context.Sellers, "SellerId", "Name", product.SellerId);
             return View(product);
         }
 
@@ -81,7 +81,7 @@ namespace MyPersonalWebsite.Controllers
             {
                 return NotFound();
             }
-            ViewData["SellerId"] = new SelectList(_context.Sellers, "SellerId", "SellerId", product.SellerId);
+            ViewData["SellerId"] = new SelectList(_context.Sellers, "SellerId", "Name", product.SellerId);
             return View(product);
         }
 
@@ -117,7 +117,7 @@ namespace MyPersonalWebsite.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["SellerId"] = new SelectList(_context.Sellers, "SellerId", "SellerId", product.SellerId);
+            ViewData["SellerId"] = new SelectList(_context.Sellers, "SellerId", "Name", product.SellerId);
             return View(product);
         }
 

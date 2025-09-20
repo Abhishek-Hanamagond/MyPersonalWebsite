@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,22 +9,22 @@ using MyPersonalWebsite.Models;
 
 namespace MyPersonalWebsite.Controllers
 {
-    public class BlogsController : Controller
+    public class BlogController : Controller
     {
         private readonly AppDbContext _context;
 
-        public BlogsController(AppDbContext context)
+        public BlogController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: Blogs
+        // GET: Blog
         public async Task<IActionResult> Index()
         {
             return View(await _context.Blogs.ToListAsync());
         }
 
-        // GET: Blogs/Details/5
+        // GET: Blog/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -32,39 +32,39 @@ namespace MyPersonalWebsite.Controllers
                 return NotFound();
             }
 
-            var blogs = await _context.Blogs
+            var blog = await _context.Blogs
                 .FirstOrDefaultAsync(m => m.BlogId == id);
-            if (blogs == null)
+            if (blog == null)
             {
                 return NotFound();
             }
 
-            return View(blogs);
+            return View(blog);
         }
 
-        // GET: Blogs/Create
+        // GET: Blog/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Blogs/Create
+        // POST: Blog/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("BlogId,Title,Content,CreatedAt")] Blogs blogs)
+        public async Task<IActionResult> Create([Bind("BlogId,Title,Content,CreatedAt")] Blog blog)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(blogs);
+                _context.Add(blog);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(blogs);
+            return View(blog);
         }
 
-        // GET: Blogs/Edit/5
+        // GET: Blog/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -72,22 +72,22 @@ namespace MyPersonalWebsite.Controllers
                 return NotFound();
             }
 
-            var blogs = await _context.Blogs.FindAsync(id);
-            if (blogs == null)
+            var blog = await _context.Blogs.FindAsync(id);
+            if (blog == null)
             {
                 return NotFound();
             }
-            return View(blogs);
+            return View(blog);
         }
 
-        // POST: Blogs/Edit/5
+        // POST: Blog/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("BlogId,Title,Content,CreatedAt")] Blogs blogs)
+        public async Task<IActionResult> Edit(int id, [Bind("BlogId,Title,Content,CreatedAt")] Blog blog)
         {
-            if (id != blogs.BlogId)
+            if (id != blog.BlogId)
             {
                 return NotFound();
             }
@@ -96,12 +96,12 @@ namespace MyPersonalWebsite.Controllers
             {
                 try
                 {
-                    _context.Update(blogs);
+                    _context.Update(blog);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!BlogsExists(blogs.BlogId))
+                    if (!BlogExists(blog.BlogId))
                     {
                         return NotFound();
                     }
@@ -112,10 +112,10 @@ namespace MyPersonalWebsite.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(blogs);
+            return View(blog);
         }
 
-        // GET: Blogs/Delete/5
+        // GET: Blog/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -123,34 +123,47 @@ namespace MyPersonalWebsite.Controllers
                 return NotFound();
             }
 
-            var blogs = await _context.Blogs
+            var blog = await _context.Blogs
                 .FirstOrDefaultAsync(m => m.BlogId == id);
-            if (blogs == null)
+            if (blog == null)
             {
                 return NotFound();
             }
 
-            return View(blogs);
+            return View(blog);
         }
 
-        // POST: Blogs/Delete/5
+        // POST: Blog/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var blogs = await _context.Blogs.FindAsync(id);
-            if (blogs != null)
+            var blog = await _context.Blogs.FindAsync(id);
+            if (blog != null)
             {
-                _context.Blogs.Remove(blogs);
+                _context.Blogs.Remove(blog);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool BlogsExists(int id)
+        private bool BlogExists(int id)
         {
             return _context.Blogs.Any(e => e.BlogId == id);
+        }
+
+        public async Task<IActionResult> Search(string query)
+        {
+            var blogs = from b in _context.Blogs
+                           select b;
+
+            if (!string.IsNullOrEmpty(query))
+            {
+                blogs = blogs.Where(b => b.Title.Contains(query));
+            }
+
+            return View(await blogs.ToListAsync());
         }
     }
 }
