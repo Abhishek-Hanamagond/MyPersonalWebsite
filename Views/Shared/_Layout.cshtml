@@ -8,38 +8,18 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">MyPersonalWebsite</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Blog" asp-action="Index">Blogs</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="" asp-controller="Seller" asp-action="Index">Seller Account</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex" method="get" asp-controller="Products" asp-action="Search">
-                        <input class="form-control me-2" type="search" placeholder="Search products..." name="query" aria-label="Search">
-                        <button class="btn btn-outline-light" type="submit">Search</button>
-                    </form>
-                </div>
-            </div>
+    <header class="header">
+        <a class="header-brand" asp-area="" asp-controller="Home" asp-action="Index">MyPersonalWebsite</a>
+        <form class="header-search" method="get" asp-controller="Products" asp-action="Search">
+            <input class="search-input" type="search" placeholder="Search products..." name="query" aria-label="Search">
+            <button class="search-button" type="submit">Search</button>
+        </form>
+        <nav class="header-nav">
+            <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-area="" asp-controller="Home" asp-action="About">About</a>
+            <a asp-area="" asp-controller="Products" asp-action="Index">Products</a>
+            <a asp-area="" asp-controller="Blog" asp-action="Index">Blogs</a>
+            <a asp-area="" asp-controller="Seller" asp-action="Index">Seller Account</a>
         </nav>
     </header>
     <div class="container">
@@ -48,7 +28,7 @@
         </main>
     </div>
 
-    <footer class="footer border-top text-light bg-dark">
+    <footer class="footer">
         <div class="container">
             &copy; 2025 - MyPersonalWebsite
         </div>
