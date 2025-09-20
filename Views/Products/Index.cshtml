@@ -1,4 +1,4 @@
-@model IEnumerable<MyPersonalWebsite.Models.Product>
+@model IEnumerable<LocalMarket.Models.Product>
 
 @{
     ViewData["Title"] = "Products";
@@ -17,7 +17,7 @@
                 </div>
 
                 <div class="product-price">
-                    $@item.Price.ToString("N2")
+                    ₹@item.Price.ToString("N", new System.Globalization.CultureInfo("en-IN"))
                 </div>
 
                 @if (item.Seller != null)

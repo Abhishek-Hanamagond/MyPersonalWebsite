@@ -9,7 +9,9 @@
 </head>
 <body>
     <header class="header">
-        <a class="header-brand" asp-area="" asp-controller="Home" asp-action="Index">LocalMarket</a>
+        <a class="header-brand" asp-area="" asp-controller="Home" asp-action="Index">
+            <img src="~/images/logo.svg" alt="LocalMarket Logo" />
+        </a>
         <form class="header-search" method="get" asp-controller="Products" asp-action="Search">
             <input class="search-input" type="search" placeholder="Search products..." name="query" aria-label="Search">
             <button class="search-button" type="submit">Search</button>
