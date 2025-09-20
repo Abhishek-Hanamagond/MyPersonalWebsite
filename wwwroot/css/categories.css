@@ -1,0 +1,15 @@
+
+.categories-section {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.categories-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.categories-section .coming-soon {
+    font-size: 1.2rem;
+    color: #888;
+}
