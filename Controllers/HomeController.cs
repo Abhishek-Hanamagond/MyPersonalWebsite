@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MyPersonalWebsite.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace LocalMarket.Controllers
+namespace MyPersonalWebsite.Controllers
 {
     public class HomeController : Controller
     {
