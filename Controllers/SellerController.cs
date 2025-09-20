@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using MyPersonalWebsite.Models;
+using LocalMarket.Models;
 
-namespace MyPersonalWebsite.Controllers
+namespace LocalMarket.Controllers
 {
-    public class SellersController : Controller
+    public class SellerController : Controller
     {
         private readonly AppDbContext _context;
 
-        public SellersController(AppDbContext context)
+        public SellerController(AppDbContext context)
         {
             _context = context;
         }
 
-        // GET: Sellers
+        // GET: Seller
         public async Task<IActionResult> Index()
         {
             return View(await _context.Sellers.ToListAsync());
         }
 
-        // GET: Sellers/Details/5
+        // GET: Seller/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -43,13 +43,13 @@ namespace MyPersonalWebsite.Controllers
             return View(seller);
         }
 
-        // GET: Sellers/Create
+        // GET: Seller/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Sellers/Create
+        // POST: Seller/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("SellerId,Name,Email,Password")] Seller seller)
@@ -63,7 +63,7 @@ namespace MyPersonalWebsite.Controllers
             return View(seller);
         }
 
-        // GET: Sellers/Edit/5
+        // GET: Seller/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -79,7 +79,7 @@ namespace MyPersonalWebsite.Controllers
             return View(seller);
         }
 
-        // POST: Sellers/Edit/5
+        // POST: Seller/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("SellerId,Name,Email,Password")] Seller seller)
@@ -112,7 +112,7 @@ namespace MyPersonalWebsite.Controllers
             return View(seller);
         }
 
-        // GET: Sellers/Delete/5
+        // GET: Seller/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -130,7 +130,7 @@ namespace MyPersonalWebsite.Controllers
             return View(seller);
         }
 
-        // POST: Sellers/Delete/5
+        // POST: Seller/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

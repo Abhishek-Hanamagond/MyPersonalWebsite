@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace MyPersonalWebsite.Models
+namespace LocalMarket.Models
 {
     public class Seller
     {

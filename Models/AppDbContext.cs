@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 
-namespace MyPersonalWebsite.Models
+namespace LocalMarket.Models
 {
     public class AppDbContext : DbContext
     {
