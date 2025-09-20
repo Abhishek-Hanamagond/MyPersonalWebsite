@@ -10,6 +10,14 @@
     <a asp-action="Create" class="btn btn-primary">Create New</a>
 </p>
 
+<!-- Add the search form here -->
+<form asp-controller="Products" asp-action="Index" method="get">
+    <p>
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <div class="row">
     @foreach (var item in Model) {
         <div class="col-md-4 fade-in">
