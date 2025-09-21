@@ -41,4 +41,41 @@
         font-size: 1.5rem;
         color: #333;
     }
+
+    /* Megamenu adjustments for mobile */
+    .megamenu {
+        width: 100%;
+    }
+
+    .megamenu-content {
+        display: none !important; /* Hide on mobile by default */
+        position: static;
+        width: 100%;
+        border: none;
+        padding: 0;
+    }
+
+    .megamenu.active .megamenu-content {
+        display: flex !important;
+        flex-direction: column;
+    }
+
+    .megamenu-column {
+        padding: 0;
+    }
+
+    .megamenu-column h5 {
+        padding: 1rem;
+        background-color: #f4f4f4;
+        margin: 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .megamenu-column a {
+        padding-left: 2rem;
+    }
+
+    body.mobile-menu-active {
+        overflow: hidden;
+    }
 }
