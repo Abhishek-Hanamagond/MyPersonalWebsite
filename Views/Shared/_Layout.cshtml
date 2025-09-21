@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -24,10 +24,21 @@
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-        <form class="header-search" method="get" asp-controller="Products" asp-action="Search">
-            <input class="search-input" type="search" placeholder="Search for products, brands and more" name="query" aria-label="Search">
-            <button class="search-button" type="submit"><i class="fa fa-search"></i></button>
-        </form>
+        <form class="header-search" 
+      method="get" 
+      asp-controller="Products" 
+      asp-action="Search"
+      onsubmit="return validateSearch()">
+    <input class="search-input" 
+           type="search" 
+           placeholder="Search for products, brands and more" 
+           name="query" 
+           id="searchBox"
+           aria-label="Search">
+    <button class="search-button" type="submit">
+        <i class="fa fa-search"></i>
+    </button>
+</form>
         <nav class="header-nav">
             <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             <a asp-area="" asp-controller="Home" asp-action="About">About</a>
@@ -103,6 +114,15 @@
             });
         });
     </script>
+    <script>
+    function validateSearch() {
+        let input = document.getElementById("searchBox").value.trim();
+        if (input === "") {
+            return false; // 🚫 Prevent form submit
+        }
+        return true; // ✅ Allow submit
+    }
+</script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
