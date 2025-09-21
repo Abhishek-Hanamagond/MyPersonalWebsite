@@ -3,15 +3,23 @@
 @media (max-width: 768px) {
     .header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: stretch;
+    }
+
+    .header-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
     }
 
     .header-brand {
-        margin-bottom: 1rem;
+        margin-bottom: 0;
     }
 
     .header-search {
         width: 100%;
+        margin-top: 1rem;
         margin-bottom: 1rem;
     }
 
@@ -33,13 +41,10 @@
 
     .hamburger-menu {
         display: block;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
         background: none;
         border: none;
         font-size: 1.5rem;
-        color: #333;
+        color: #fff;
     }
 
     /* Megamenu adjustments for mobile */
