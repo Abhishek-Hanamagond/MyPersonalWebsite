@@ -3,7 +3,9 @@
     ViewData["Title"] = "Search Products";
     var query = ViewContext.HttpContext.Request.Query["query"].ToString();
 }
-
+@if(model == null){
+    return;
+}
 <div class="container mt-4">
     <h2>@ViewData["Title"]</h2>
 
