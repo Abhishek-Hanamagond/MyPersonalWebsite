@@ -31,29 +31,7 @@
         <nav class="header-nav">
             <a asp-area="" asp-controller="Home" asp-action="Index">Home</a>
             <a asp-area="" asp-controller="Home" asp-action="About">About</a>
-            <div class="megamenu">
-                <a class="megamenu-title" asp-area="" asp-controller="Products" asp-action="Index">Products</a>
-                <div class="megamenu-content">
-                    <div class="megamenu-column">
-                        <h5>Clothing</h5>
-                        <a href="#">Men's</a>
-                        <a href="#">Women's</a>
-                        <a href="#">Kid's</a>
-                    </div>
-                    <div class="megamenu-column">
-                        <h5>Electronics</h5>
-                        <a href="#">Mobiles</a>
-                        <a href="#">Laptops</a>
-                        <a href="#">Cameras</a>
-                    </div>
-                    <div class="megamenu-column">
-                        <h5>Home & Kitchen</h5>
-                        <a href="#">Furniture</a>
-                        <a href="#">Decor</a>
-                        <a href="#">Appliances</a>
-                    </div>
-                </div>
-            </div>
+            <a asp-area="" asp-controller="Products" asp-action="Index">Products</a>
             <a asp-area="" asp-controller="Blog" asp-action="Index">Blogs</a>
             <a asp-area="" asp-controller="Seller" asp-action="Index">Seller Account</a>
         </nav>
@@ -123,13 +101,6 @@
                 $('.header-nav').toggleClass('active');
                 $('body').toggleClass('mobile-menu-active');
             });
-
-            if (window.innerWidth <= 768) {
-                $('.megamenu-title').click(function (e) {
-                    e.preventDefault();
-                    $(this).parent('.megamenu').toggleClass('active');
-                });
-            }
         });
     </script>
     @await RenderSectionAsync("Scripts", required: false)
