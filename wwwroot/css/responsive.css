@@ -1,0 +1,44 @@
+/* Responsive design for mobile devices */
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header-brand {
+        margin-bottom: 1rem;
+    }
+
+    .header-search {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .header-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .header-nav.active {
+        display: flex;
+    }
+
+    .header-nav a {
+        margin: 0;
+        padding: 1rem;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .hamburger-menu {
+        display: block;
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: #333;
+    }
+}

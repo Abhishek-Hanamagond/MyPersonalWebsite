@@ -10,12 +10,16 @@
     <link rel="stylesheet" href="~/css/custom.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/footer.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/categories.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/responsive.css" asp-append-version="true" />
 </head>
 <body>
     <header class="header">
         <a class="header-brand" asp-area="" asp-controller="Home" asp-action="Index">
             <img src="~/images/logo.svg" alt="LocalMarket Logo" />
         </a>
+        <button class="hamburger-menu" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
         <form class="header-search" method="get" asp-controller="Products" asp-action="Search">
             <input class="search-input" type="search" placeholder="Search products..." name="query" aria-label="Search">
             <button class="search-button" type="submit">Search</button>
@@ -87,6 +91,13 @@
     <script src="~/lib/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/sale.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            $('.hamburger-menu').click(function () {
+                $('.header-nav').toggleClass('active');
+            });
+        });
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
