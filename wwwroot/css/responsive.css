@@ -79,3 +79,9 @@
         overflow: hidden;
     }
 }
+
+@media (min-width: 769px) {
+    .hamburger-menu {
+        display: none;
+    }
+}
